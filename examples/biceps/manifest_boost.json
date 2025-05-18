@@ -1,0 +1,108 @@
+{
+    "boost": {
+        "description": "Collection of nonstandard C++ libraries",
+        "pkgName": "boost",
+        "provides": "boost",
+        "dependencies": [],
+        "version": "1.87.0",
+        "srcURL": "https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.gz",
+        "sha256": "f55c340aa49763b1925ccf02b2e83f35fdcf634c9d5164a2acb87540173c741d",
+        "ENVARS": {
+            "CC": "cc",
+            "CXX": "c++",
+            "CXXFLAGS": "-fPIC -std=c++11"
+        },
+        "configFLAGS": [
+            "--with-libraries=all",
+            "--with-python=/home/work/opt/biceps-env/bin/python3.10"
+        ],
+        "makeFLAGS": [
+            "optimization=speed",
+            "link=shared",
+            "variant=release",
+            "-j8"
+        ],
+        "createBuildDir": false,
+        "configCommand": "sh ./bootstrap.sh",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "./b2 install",
+        "downloaded": false,
+        "verified": false,
+        "extracted": false,
+        "configured": false,
+        "compiled": false,
+        "tested": true,
+        "installed": false
+    },
+    "eigen": {
+        "description": "C++ template library for linear algebra",
+        "pkgName": "eigen",
+        "provides": "eigen",
+        "dependencies": [],
+        "version": "3.4.0",
+        "srcURL": "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz",
+        "sha256": "8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72",
+        "ENVARS": {
+            "CC": "cc",
+            "CXX": "c++",
+            "CXXFLAGS": "-std=c++11"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "makeFLAGS": [
+            "-j8"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": false,
+        "verified": false,
+        "extracted": false,
+        "configured": false,
+        "compiled": false,
+        "tested": true,
+        "installed": false
+    },
+    "eigenpy": {
+        "description": "Efficient bindings between Numpy and Eigen using Boost.Python",
+        "pkgName": "eigenpy",
+        "provides": "eigenpy",
+        "dependencies": [
+            "boost",
+            "eigen"
+        ],
+        "version": "3.10.3",
+        "srcURL": "https://github.com/stack-of-tasks/eigenpy/archive/refs/tags/v3.10.3.tar.gz",
+        "sha256": "4d3d8315b841fbd166c0c34382322895528e7c6532d897d2f4415222df40201d",
+        "ENVARS": {
+            "CC": "cc",
+            "CXX": "c++",
+            "CXXFLAGS": "-std=c++11"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON",
+            "-DPYTHON_EXECUTABLE=/home/work/opt/biceps-env/bin/python3.10",
+            "-DPYTHON_LIBRARY=/home/work/opt/biceps-env/lib/libpython3.10.so"
+        ],
+        "makeFLAGS": [
+            "-j8"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": false,
+        "verified": false,
+        "extracted": false,
+        "configured": false,
+        "compiled": false,
+        "tested": true,
+        "installed": false
+    }
+}

@@ -1,0 +1,463 @@
+{
+    "zlib": {
+        "description": "Cross platform, lossless data-compression library",
+        "pkgName": "zlib",
+        "provides": "zlib",
+        "dependencies": [],
+        "version": "1.2.13",
+        "srcURL": "https://github.com/madler/zlib/archive/refs/tags/v1.2.13.tar.gz",
+        "sha256": "1525952a0a567581792613a9723333d7f8cc20b87a81f920fb8bc7e3f2251428",
+        "ENVARS": {},
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "mpi": {
+        "description": "A high performance message passing library for distributed memory systems",
+        "pkgName": "openmpi",
+        "provides": "mpi",
+        "dependencies": [
+            "zlib"
+        ],
+        "version": "4.1.4",
+        "srcURL": "https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.4.tar.gz",
+        "sha256": "e166dbe876e13a50c2882e11193fecbc4362e89e6e7b6deeb69bf095c0f4fc4c",
+        "ENVARS": {},
+        "configFLAGS": [],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "../configure",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "lapack": {
+        "description": "High performance linear algebra routines",
+        "pkgName": "lapack",
+        "provides": "lapack",
+        "dependencies": [
+            "mpi"
+        ],
+        "version": "3.10.0",
+        "srcURL": "https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.0.tar.gz",
+        "sha256": "328c1bea493a32cac5257d84157dc686cc3ab0b004e2bea22044e0a59f6f8a19",
+        "ENVARS": {},
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "scalapack": {
+        "description": "High performace linear algebra routines for distributed memory systems",
+        "pkgName": "scalapack",
+        "provides": "scalapack",
+        "dependencies": [
+            "mpi",
+            "lapack"
+        ],
+        "version": "2.1.0",
+        "srcURL": "https://github.com/Reference-ScaLAPACK/scalapack/archive/refs/tags/v2.1.0.tar.gz",
+        "sha256": "f03fda720a152030b582a237f8387014da878b84cbd43c568390e9f05d24617f",
+        "ENVARS": {
+            "CC": "cc",
+            "FC": "f95"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON",
+            "-DCMAKE_Fortran_FLAGS=-fallow-argument-mismatch"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "arpack": {
+        "description": "Fortran77 subroutines designed to solve large-scale eigenvalue problems",
+        "pkgName": "arpack-ng",
+        "provides": "arpack",
+        "dependencies": [
+            "mpi",
+            "lapack"
+        ],
+        "version": "3.8.0",
+        "srcURL": "https://github.com/opencollab/arpack-ng/archive/refs/tags/3.8.0.tar.gz",
+        "sha256": "ada5aeb3878874383307239c9235b716a8a170c6d096a6625bfd529844df003d",
+        "buildSystem": "cmake",
+        "ENVARS": {
+            "CC": "mpicc",
+            "FC": "mpifort"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=on",
+            "-DMPI=on"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "hdf5": {
+        "description": "High-performance data management and storage suite",
+        "pkgName": "hdf5",
+        "provides": "hdf5",
+        "dependencies": [
+            "mpi",
+            "zlib"
+        ],
+        "version": "1.12.1",
+        "srcURL": "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar.gz",
+        "sha256": "79c66ff67e666665369396e9c90b32e238e501f345afd2234186bfb8331081ca",
+        "ENVARS": {
+            "CC": "mpicc",
+            "FC": "mpifort"
+        },
+        "configFLAGS": [
+            "--enable-parallel",
+            "--enable-fortran"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "../configure",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "xzutils": {
+        "description": "General-purpose data compression software with a high compression ratio",
+        "pkgName": "xzutils",
+        "provides": "xzutils",
+        "dependencies": [],
+        "version": "5.4.4",
+        "srcURL": "https://tukaani.org/xz/xz-5.4.4.tar.gz",
+        "sha256": "aae39544e254cfd27e942d35a048d592959bd7a79f9a624afb0498bb5613bdf8",
+        "buildSystem": "cmake",
+        "ENVARS": {
+            "CC": "cc"
+        },
+        "configFLAGS": [
+            "-DBUILD_SHARED_LIBS=on",
+            "-DCMAKE_BUILD_TYPE=Release"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "libxml2": {
+        "description": "XML toolkit implemented in C, originally developed for the GNOME Project",
+        "pkgName": "libxml2",
+        "provides": "libxml2",
+        "dependencies": [
+            "xzutils"
+        ],
+        "version": "2.9.14",
+        "srcURL": "https://github.com/GNOME/libxml2/archive/refs/tags/v2.9.14.tar.gz",
+        "sha256": "77e7c7240ce447582d2c3471f050423c01ec0e201c3bf2fd6731064d1891f362",
+        "buildSystem": "cmake",
+        "ENVARS": {
+            "CC": "cc"
+        },
+        "configFLAGS": [
+            "-DBUILD_SHARED_LIBS=ON",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DLIBXML2_WITH_PYTHON=OFF"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "netcdfc": {
+        "description": "C bidings for Unidata's Network Common Data Form (netCDF) library interface",
+        "pkgName": "netcdfc",
+        "provides": "netcdfc",
+        "dependencies": [
+            "libxml2"
+        ],
+        "version": "4.9.0",
+        "srcURL": "https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.0.tar.gz",
+        "sha256": "9f4cb864f3ab54adb75409984c6202323d2fc66c003e5308f3cdf224ed41c0a6",
+        "buildSystem": "cmake",
+        "ENVARS": {
+            "CC": "mpicc",
+            "FC": "mpifort"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON",
+            "-DENABLE_DOXYGEN=OFF",
+            "-DENABLE_HDF5=ON",
+            "-DHDF5_PARALLEL=ON",
+            "-DENABLE_PARALLEL4=ON",
+            "-DENABLE_PARALLEL_TESTS=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "netcdff": {
+        "description": "Fortran bindings for Unidata's Network Common Data Form (netCDF) library interface",
+        "pkgName": "netcdff",
+        "provides": "netcdff",
+        "dependencies": [
+            "netcdfc"
+        ],
+        "version": "4.6.0",
+        "srcURL": "https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.0.tar.gz",
+        "sha256": "8194aa70e400c0adfc456127c1d97af2c6489207171d13b10cd754a16da8b0ca",
+        "ENVARS": {
+            "CC": "mpicc",
+            "FC": "mpifort",
+            "FFLAGS": "-fallow-argument-mismatch"
+        },
+        "buildSystem": "cmake",
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON",
+            "-DENABLE_DOXYGEN=OFF",
+            "-DENABLE_PARALLEL_TESTS=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "eigen": {
+        "description": "C++ template library for linear algebra",
+        "pkgName": "eigen",
+        "provides": "eigen",
+        "dependencies": [],
+        "version": "3.4.0",
+        "srcURL": "https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz",
+        "sha256": "8586084f71f9bde545ee7fa6d00288b264a2b7ac3607b974e54d13e7162c1c72",
+        "ENVARS": {
+            "CC": "cc"
+        },
+        "configFLAGS": [
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "cmake --build .",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "petsc": {
+        "description": "Suite of data structures and routines for the scalable (parallel) solution of scientific applications modeled by partial differential equations",
+        "pkgName": "petsc",
+        "provides": "petsc",
+        "dependencies": [
+            "zlib",
+            "mpi",
+            "eigen"
+        ],
+        "version": "3.18.1",
+        "srcURL": "https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.18.1.tar.gz",
+        "sha256": "02f5979a22f5961bb775d527f8450db77bc6a8d2541f3b05fb586829b82e9bc8",
+        "ENVARS": {},
+        "configFLAGS": [
+            "--with-blaslapack-dir=/home/work/opt/elmer-env",
+            "--with-mpi-dir=/home/work/opt/elmer-env",
+            "--with-zlib-dir=/home/work/opt/elmer-env",
+            "--with-netcdf-dir=/home/work/opt/elmer-env",
+            "--with-hdf5-dir=/home/work/opt/elmer-env",
+            "--with-eigen-dir=/home/work/opt/elmer-env",
+            "--with-scalapack-dir=/home/work/opt/elmer-env",
+            "--COPTFLAGS=-O2",
+            "--CXXOPTFLAGS=-O2",
+            "--FOPTFLAGS=-O2",
+            "--download-mumps=1",
+            "--download-suitesparse=1",
+            "--download-metis=1",
+            "--download-parmetis=1"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "configCommand": "./configure",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "elmer": {
+        "description": "Finite element software for numerical solution of partial differential equations",
+        "pkgName": "elmer",
+        "provides": "elmer",
+        "dependencies": [
+            "mpi",
+            "lapack",
+            "scalapack",
+            "hdf5",
+            "netcdfc",
+            "netcdff"
+        ],
+        "version": "n/a",
+        "srcURL": "https://github.com/ElmerCSC/elmerfem/archive/devel.tar.gz",
+        "sha256": "SKIP",
+        "ENVARS": {
+            "CC": "mpicc",
+            "FC": "mpifort",
+            "FFLAGS": "-fallow-argument-mismatch -fallow-invalid-boz"
+        },
+        "configFLAGS": [
+            "-DWITH_MPI=ON",
+            "-DWITH_CONTRIB=ON",
+            "-DWITH_NETCDF=ON",
+            "-DWITH_ElmerIce=ON",
+            "-DWITH_Mumps=ON",
+            "-DWITH_MATC=ON",
+            "-DWITH_LUA=ON"
+        ],
+        "makeFLAGS": [
+            "-j4"
+        ],
+        "createBuildDir": true,
+        "configCommand": "cmake ..",
+        "prefixCommand": "-DCMAKE_INSTALL_PREFIX=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    }
+}

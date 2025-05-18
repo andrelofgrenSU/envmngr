@@ -1,0 +1,76 @@
+{
+    "openssl": {
+        "description": "TLS/SSL and crypto library",
+        "pkgName": "openssl",
+        "provides": "openssl",
+        "dependencies": [],
+        "version": "1.1.1",
+        "srcURL": "https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz",
+        "sha256": "cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8",
+        "ENVARS": {
+            "CC": "cc",
+            "CXX": "c++",
+            "CXXFLAGS": "-std=c++11"
+        },
+        "configFLAGS": [],
+        "makeFLAGS": [
+            "-j8"
+        ],
+        "createBuildDir": false,
+        "prefix": "openssl",
+        "configCommand": "./config",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "make",
+        "installCommand": "make install_sw",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    },
+    "python": {
+        "description": "Python programming language",
+        "pkgName": "python",
+        "provides": "python",
+        "dependencies": [
+            "openssl"
+        ],
+        "version": "3.10.16",
+        "srcURL": "https://www.python.org/ftp/python/3.10.16/Python-3.10.16.tgz",
+        "sha256": "f2e22ed965a93cfeb642378ed6e6cdbc127682664b24123679f3d013fafe9cd0",
+        "ENVARS": {
+            "CC": "cc",
+            "CXX": "c++",
+            "CXXFLAGS": "-O3 -march=native -fPIC -std=c++11",
+            "CFLAGS": "-O3 -march=native -fPIC",
+            "LDFLAGS": "-Wl,-rpath=/home/user/opt/biceps-env/lib/"
+        },
+        "configFLAGS": [
+            "--enable-optimizations",
+            "--with-lto",
+            "--enable-shared",
+            "--with-computed-gotos",
+            "--with-openssl=/home/user/opt/biceps-env/openssl",
+            "--with-openssl-rpath=/home/user/opt/biceps-env/openssl/lib",
+            "--with-ensurepip=install"
+        ],
+        "makeFLAGS": [
+            "-j8"
+        ],
+        "prefix": "",
+        "createBuildDir": false,
+        "configCommand": "./configure",
+        "prefixCommand": "--prefix=",
+        "buildCommand": "make",
+        "installCommand": "make install",
+        "downloaded": true,
+        "verified": true,
+        "extracted": true,
+        "configured": true,
+        "compiled": true,
+        "tested": true,
+        "installed": true
+    }
+}
